@@ -3,6 +3,7 @@ import user from "./assets/user.svg";
 
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
+const welcomeBox = document.querySelector("#welcome_box");
 
 let loadInterval;
 
@@ -60,6 +61,9 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
+
+  // clear welcome screen
+  welcomeBox.remove();
 
   // users chat
   chatContainer.innerHTML += chatStrip(false, data.get("prompt"));
