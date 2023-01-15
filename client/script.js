@@ -76,7 +76,7 @@ const handleSubmit = async (e) => {
   loader(messageDiv);
 
   // fetch data from server
-  const response = await fetch("http://localhost:5000", {
+  const response = await fetch("https://grayai.onrender.com", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -86,19 +86,19 @@ const handleSubmit = async (e) => {
     }),
   });
 
-  clearInterval(loadInterval)
-  messageDiv.innerHTML = ''
+  clearInterval(loadInterval);
+  messageDiv.innerHTML = "";
 
   if (response.ok) {
-    const data = await response.json()
-    const parseData = data.bot.trim()
+    const data = await response.json();
+    const parseData = data.bot.trim();
 
-    typeText(messageDiv, parseData)
+    typeText(messageDiv, parseData);
   } else {
-    const err = await response.text()
+    const err = await response.text();
 
-    messageDiv.innerHTML = 'Something went wrong'
-    alert(err)
+    messageDiv.innerHTML = "Something went wrong";
+    alert(err);
   }
 };
 
